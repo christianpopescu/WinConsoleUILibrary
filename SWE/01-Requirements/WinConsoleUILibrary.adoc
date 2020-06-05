@@ -7,8 +7,13 @@ v 1.0, 2020-06-05
 
 == Introduction	
 
+GUI-like surface in text mode
+
 WinConsoleUILibrary is a library that allows to create Console applications with user interface like Windows.
 
 The target is to create application that allows interfaces with Input Text areas, scroll text areas, Menus everithing in one screen
 
 Old application examples: Turbo Vision, Norton Commander.
+
+
+It should use code page 850 in windows.
