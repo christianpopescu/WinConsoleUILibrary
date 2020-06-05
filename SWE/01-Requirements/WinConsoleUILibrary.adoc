@@ -1,0 +1,14 @@
+= WinConsoleUILibrary
+Doc Writer <christian.popescu@outlook.com>
+v 1.0, 2020-06-05
+:sectnums:
+:toc:
+:toclevels: 5
+
+== Introduction	
+
+WinConsoleUILibrary is a library that allows to create Console applications with user interface like Windows.
+
+The target is to create application that allows interfaces with Input Text areas, scroll text areas, Menus everithing in one screen
+
+Old application examples: Turbo Vision, Norton Commander.
