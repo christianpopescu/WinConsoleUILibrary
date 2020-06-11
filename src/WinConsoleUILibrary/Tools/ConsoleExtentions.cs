@@ -1,5 +1,5 @@
 using System;
-namespace SanboxConsole
+namespace WinConsoleUILibrary.Tools
 {
     public static class ConsoleExtension 
     {
