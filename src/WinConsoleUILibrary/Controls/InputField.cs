@@ -1,15 +1,20 @@
+using System.Collections.Generic;
+
 namespace WinConsoleUILibrary.Controls
 {
     public class InputField
     {
-        int MaxSize {get; set;}
-        string Value {get; set;}
-        int CursorPosition {get; set;}
+        private List<char> _value;
+        public int MaxSize {get; set;}
+        public string Value
+        {
+            get => new string(_value.ToArray());
+        }
+        public int CursorPosition {get; set;}
 
         private InputField()
         {
             CursorPosition = 0;
-            Value = "";
         }
 
         public InputField(int maxSize) : this() => MaxSize = maxSize;
@@ -18,10 +23,17 @@ namespace WinConsoleUILibrary.Controls
         {
             if (CursorPosition < MaxSize + 1) 
             {
-                Value += chr;
+                _value.Add(chr);
                 CursorPosition++;
             }
+        }
 
+        public void DeleteLeft()
+        {
+            if (CursorPosition > 0)
+            {
+
+            }
         }
 
     }
