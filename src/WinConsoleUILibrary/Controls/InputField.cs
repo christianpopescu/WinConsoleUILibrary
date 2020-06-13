@@ -32,7 +32,7 @@ namespace WinConsoleUILibrary.Controls
         {
             if (CursorPosition > 0)
             {
-
+                _value.RemoveAt(CursorPosition-1);
             }
         }
 
