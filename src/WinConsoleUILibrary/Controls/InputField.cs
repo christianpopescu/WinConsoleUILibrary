@@ -6,7 +6,7 @@ namespace WinConsoleUILibrary.Controls
 {
     public class InputField
     {
-        private List<char> _value;
+        private List<char> _value = new List<char>();
         public int MaxSize {get; set;}
         public string Value
         {
@@ -39,13 +39,20 @@ namespace WinConsoleUILibrary.Controls
             if (CursorPosition > 0)
             {
                 _value.RemoveAt(CursorPosition-1);
+                CursorPosition--;
             }
         }
 
+        protected void ClearFieldOnScreen()
+        {
+            ConsoleExtension.WriteAt(ScreenPosition, true, new String(' ', MaxSize));
+        }
         public void Draw()
         {
-            ConsoleExtension.WriteAt(ScreenPosition, true, _value.ToString());
+            ClearFieldOnScreen();
+            ConsoleExtension.WriteAt(ScreenPosition, true, Value);
         }
+
 
     }
 }
