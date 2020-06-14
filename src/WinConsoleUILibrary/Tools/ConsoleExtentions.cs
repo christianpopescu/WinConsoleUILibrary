@@ -8,13 +8,13 @@ namespace WinConsoleUILibrary.Tools
            Position save = new Position(0,0);
            if (keepCursorPosition)
            {
-               save = new Position(Console.CursorTop,Console.CursorLeft);
+               save = new Position(Console.CursorTop, Console.CursorLeft);
            }
            Console.SetCursorPosition(pos.Raw, pos.Column);
            Console.WriteLine(toWrite);
            if (keepCursorPosition)
            {
-               Console.SetCursorPosition(save.Column,save.Raw);
+               Console.SetCursorPosition(save.Column, save.Raw);
            }
 
         }

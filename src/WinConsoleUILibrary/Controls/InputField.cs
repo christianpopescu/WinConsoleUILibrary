@@ -27,7 +27,7 @@ namespace WinConsoleUILibrary.Controls
 
         public void AddChar(char chr) 
         {
-            if (CursorPosition < MaxSize + 1) 
+            if (CursorPosition < MaxSize ) 
             {
                 _value.Add(chr);
                 CursorPosition++;
