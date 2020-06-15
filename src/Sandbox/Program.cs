@@ -18,6 +18,17 @@ namespace Sandbox
             ConsoleKeyInfo cki;
             //char c='\0';
             //Func<ConsoleKey> le = () => {var cc = Console.ReadKey(true); c = cc.KeyChar; return cc.Key;};
+
+            //TODO:
+            // Objective: Have some functionality that allows to get some input apply some processing to the input and
+            // show the results
+            // - add windows object to manage the controls
+            // - move loop to window
+            // - add focus management
+            // - show whe control has the focus
+            // - add button 
+            // - add scroll text control
+
             while ((cki=Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 char c = cki.KeyChar;
