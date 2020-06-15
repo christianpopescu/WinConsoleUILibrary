@@ -14,23 +14,25 @@ namespace Sandbox
             InputField ifld2 = new InputField(15,new Position(21,21));
             InputField ifld = ifld1;
             Console.CursorVisible = false;
-            ConsoleKey ck;
-            char c='\0';
-            Func<ConsoleKey> le = () => {var cc = Console.ReadKey(true); c = cc.KeyChar; return cc.Key;};
-            while ((ck = le())!= ConsoleKey.Escape)
+            //ConsoleKey ck;
+            ConsoleKeyInfo cki;
+            //char c='\0';
+            //Func<ConsoleKey> le = () => {var cc = Console.ReadKey(true); c = cc.KeyChar; return cc.Key;};
+            while ((cki=Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
+                char c = cki.KeyChar;
                 if (c != '\0' && c != '\b' && c != '\t')
                 {
                     ifld.AddChar(c);
                     ifld.Draw();
                 }
-                else if (ck == ConsoleKey.Backspace)
+                else if (cki.Key == ConsoleKey.Backspace)
                 {
                     ifld.DeleteLeft();
                     ifld.Draw();
                 }
                
-                if (ck == ConsoleKey.Tab) 
+                if (cki.Key == ConsoleKey.Tab) 
                 {
                     if (object.ReferenceEquals(ifld, ifld1))
                     {
