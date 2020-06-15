@@ -4,7 +4,7 @@ using WinConsoleUILibrary.Tools;
 
 namespace WinConsoleUILibrary.Controls
 {
-    public class InputField
+    public class InputField : IControl
     {
         private List<char> _value = new List<char>();
         public int MaxSize {get; set;}
@@ -53,6 +53,20 @@ namespace WinConsoleUILibrary.Controls
             ConsoleExtension.WriteAt(ScreenPosition, true, Value);
         }
 
-
+        public void SendKey(ConsoleKeyInfo consoleKeyInfo)
+        {
+                char c = consoleKeyInfo.KeyChar;
+                if (c != '\0' && c != '\b' && c != '\t')
+                {
+                    AddChar(c);
+                    Draw();
+                }
+                else if (consoleKeyInfo.Key == ConsoleKey.Backspace)
+                {
+                    DeleteLeft();
+                    Draw();
+                }
+        }
+          
     }
 }

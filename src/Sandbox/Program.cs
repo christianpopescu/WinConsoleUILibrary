@@ -21,17 +21,6 @@ namespace Sandbox
             while ((cki=Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 char c = cki.KeyChar;
-                if (c != '\0' && c != '\b' && c != '\t')
-                {
-                    ifld.AddChar(c);
-                    ifld.Draw();
-                }
-                else if (cki.Key == ConsoleKey.Backspace)
-                {
-                    ifld.DeleteLeft();
-                    ifld.Draw();
-                }
-               
                 if (cki.Key == ConsoleKey.Tab) 
                 {
                     if (object.ReferenceEquals(ifld, ifld1))
@@ -43,6 +32,8 @@ namespace Sandbox
                         ifld = ifld1;
                     }
                 }
+                else
+                ifld.SendKey(cki);
             }
         }
     }

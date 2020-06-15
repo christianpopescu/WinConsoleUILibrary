@@ -1,8 +1,9 @@
+using System;
 namespace WinConsoleUILibrary.Controls
 {
-    public interface IContol
+    public interface IControl
     {
         public void Draw();
-        public void SendKey();
+        public void SendKey(ConsoleKeyInfo consoleKeyInfo);
     }
 }
