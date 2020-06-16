@@ -4,16 +4,11 @@ using System.Text;
 
 namespace WinConsoleUILibrary.Tools
 {
-    public class Position
+    public class Position : Coordinate2D
     {
 
-        public Position():this(0,0) {}
-        public Position(int r, int c)
-        { 
-            Raw = r;
-            Column = c;
-        }
-        public int Raw {get; set;}
-        public int Column {get; set;}
+        public Position():base(0,0) {}
+        public Position(int r, int c) : base(r,c) {}
+
     }
 }
