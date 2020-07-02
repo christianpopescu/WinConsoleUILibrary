@@ -22,7 +22,7 @@ namespace Sandbox
             //TODO:
             // Objective: Have some functionality that allows to get some input apply some processing to the input and
             // show the results
-            // - add windows object to manage the controls
+            // - add windows object to manage the controls - OK
             // - move loop to window
             // - add focus management
             // - show whe control has the focus
