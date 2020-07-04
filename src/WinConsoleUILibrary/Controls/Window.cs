@@ -18,6 +18,10 @@ namespace WinConsoleUILibrary.Controls
             Size = new CSize(20, 80);
         }
 
-        // ToDo: Add method to add controls
+        public Window AddControl(IControl control)
+        {
+            controls.AddLast(control);
+            return this;
+        }
     }
 }

@@ -11,7 +11,11 @@ namespace Sandbox
             Console.WriteLine("Hello World!");
             ConsoleExtension.WriteAt(new Position(10,10),true,"Test of Console Extension");
             InputField ifld1 = new InputField(10,new Position(20,20));
-            InputField ifld2 = new InputField(15,new Position(21,21));
+            InputField ifld2 = new InputField(15,new Position(20,21));
+
+            Window wmain = new Window();
+            wmain.AddControl(ifld1).AddControl(ifld2);
+
             InputField ifld = ifld1;
             Console.CursorVisible = false;
             //ConsoleKey ck;
