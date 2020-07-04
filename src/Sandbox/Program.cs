@@ -32,24 +32,8 @@ namespace Sandbox
             // - show whe control has the focus
             // - add button 
             // - add scroll text control
+            wmain.Run();
 
-            while ((cki=Console.ReadKey(true)).Key != ConsoleKey.Escape)
-            {
-                char c = cki.KeyChar;
-                if (cki.Key == ConsoleKey.Tab) 
-                {
-                    if (object.ReferenceEquals(ifld, ifld1))
-                    {
-                        ifld = ifld2;
-                    }
-                    else
-                    {
-                        ifld = ifld1;
-                    }
-                }
-                else
-                ifld.SendKey(cki);
-            }
         }
     }
 }

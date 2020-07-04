@@ -1,5 +1,6 @@
 using WinConsoleUILibrary.Tools;
 using DSALibrary.Collections;
+using System;
 
 namespace WinConsoleUILibrary.Controls
 {
@@ -22,6 +23,22 @@ namespace WinConsoleUILibrary.Controls
         {
             controls.AddLast(control);
             return this;
+        }
+
+        public void Run()
+        {
+            ConsoleKeyInfo cki;
+            var ci = controls.GetCircularIterator();
+            while ((cki = Console.ReadKey(true)).Key != ConsoleKey.Escape)
+            {
+                char c = cki.KeyChar;
+                if (cki.Key == ConsoleKey.Tab)
+                {
+                    ci.MoveNext();
+                }
+                else
+                    ci.Current().SendKey(cki);
+            }
         }
     }
 }
