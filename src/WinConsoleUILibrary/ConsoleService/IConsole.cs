@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using WinConsoleUILibrary.Tools;
 
 namespace WinConsoleUILibrary.ConsoleService
 {
@@ -6,6 +7,8 @@ namespace WinConsoleUILibrary.ConsoleService
     {
         int CursorTop { get; set; }
 
-        int CursorLef { get; set; }
+        int CursorLeft { get; set; }
+
+        void WriteAt(Position pos, Boolean keepCursorPosition, String toWrite);
     }
 }
