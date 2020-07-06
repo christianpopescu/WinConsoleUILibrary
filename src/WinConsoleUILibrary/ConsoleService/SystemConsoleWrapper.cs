@@ -26,9 +26,12 @@ namespace WinConsoleUILibrary.ConsoleService
             set => System.Console.CursorLeft = value;
         }
 
-        public void WriteAt(Position pos, bool keepCursorPosition, string toWrite)
-        {
-            Console.WriteAt();
-        }
+        public void SetCursorPosition(int left, int top) => System.Console.SetCursorPosition(left, top);
+
+        #region WriteLine
+
+        public void WriteLine(string text) => System.Console.WriteLine(text);
+
+        #endregion
     }
 }

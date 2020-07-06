@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
 using WinConsoleUILibrary.Tools;
+using WinConsoleUILibrary.ConsoleService;
 
 namespace WinConsoleUILibrary.Controls
 {
-    public class InputField : IControl
+    public class InputField<T> : IControl where T : IConsole
     {
         private List<char> _value = new List<char>();
+
+        private ConsoleExtendedWrapper<T> _consoleExtendedWrapper;
+
         public int MaxSize {get; set;}
         public string Value
         {
@@ -21,10 +25,13 @@ namespace WinConsoleUILibrary.Controls
             CursorPosition = 0;
         }
 
-        public InputField(int maxSize) : this() => MaxSize = maxSize;
+        private InputField(int maxSize) : this() => MaxSize = maxSize;
 
-        public InputField(int maxSize, Position screenPosition) : this(maxSize) => ScreenPosition = screenPosition;
+        private InputField(int maxSize, Position screenPosition) : this(maxSize) => ScreenPosition = screenPosition;
 
+        public InputField(int maxSize, Position screenPosition, ConsoleExtendedWrapper<T> consoleExtendedWrapper)
+            : this(maxSize, screenPosition) => _consoleExtendedWrapper = consoleExtendedWrapper;
+  
         public void AddChar(char chr) 
         {
             if (CursorPosition < MaxSize ) 
