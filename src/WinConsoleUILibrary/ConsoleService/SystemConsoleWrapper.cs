@@ -34,6 +34,12 @@ namespace WinConsoleUILibrary.ConsoleService
             set => System.Console.BackgroundColor = value;
         }
 
+        public ConsoleColor ForegroundColor
+        {
+            get => System.Console.ForegroundColor;
+            set => System.Console.ForegroundColor = value;
+        }
+
         #region WriteLine
 
         public void WriteLine(string text) => System.Console.WriteLine(text);

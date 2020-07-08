@@ -13,6 +13,8 @@ namespace WinConsoleUILibrary.ConsoleService
 
         TC BackgroundColor { get; set; }
 
+        TC ForegroundColor { get; set; }
+
         #region WriteLine
 
         void WriteLine(String text);

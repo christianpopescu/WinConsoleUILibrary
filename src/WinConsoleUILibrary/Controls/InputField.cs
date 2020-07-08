@@ -52,12 +52,12 @@ namespace WinConsoleUILibrary.Controls
 
         protected void ClearFieldOnScreen()
         {
-            ConsoleExtension.WriteAt(ScreenPosition, true, new String(' ', MaxSize));
+            _consoleExtendedWrapper.WriteAt(ScreenPosition, true, new String(' ', MaxSize));
         }
         public void Draw()
         {
             ClearFieldOnScreen();
-            ConsoleExtension.WriteAt(ScreenPosition, true, Value);
+            _consoleExtendedWrapper.WriteAt(ScreenPosition, true, Value);
         }
 
         public void SendKey(ConsoleKeyInfo consoleKeyInfo)
