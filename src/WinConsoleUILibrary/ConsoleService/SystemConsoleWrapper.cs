@@ -3,7 +3,7 @@ using WinConsoleUILibrary.Tools;
 
 namespace WinConsoleUILibrary.ConsoleService
 {
-    public class SystemConsoleWrapper:IConsole
+    public class SystemConsoleWrapper:IConsole<ConsoleColor>
     {
 
         private static readonly SystemConsoleWrapper _instance = new SystemConsoleWrapper();
@@ -27,6 +27,12 @@ namespace WinConsoleUILibrary.ConsoleService
         }
 
         public void SetCursorPosition(int left, int top) => System.Console.SetCursorPosition(left, top);
+
+        public ConsoleColor BackgroundColor
+        {
+            get => System.Console.BackgroundColor;
+            set => System.Console.BackgroundColor = value;
+        }
 
         #region WriteLine
 

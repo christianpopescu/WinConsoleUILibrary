@@ -5,11 +5,11 @@ using WinConsoleUILibrary.ConsoleService;
 
 namespace WinConsoleUILibrary.Controls
 {
-    public class InputField<T> : IControl where T : IConsole
+    public class InputField<T,TC> : IControl where T : IConsole<TC> where TC : System.Enum
     {
         private List<char> _value = new List<char>();
 
-        private ConsoleExtendedWrapper<T> _consoleExtendedWrapper;
+        private ConsoleExtendedWrapper<T,TC> _consoleExtendedWrapper;
 
         public int MaxSize {get; set;}
         public string Value
@@ -29,7 +29,7 @@ namespace WinConsoleUILibrary.Controls
 
         private InputField(int maxSize, Position screenPosition) : this(maxSize) => ScreenPosition = screenPosition;
 
-        public InputField(int maxSize, Position screenPosition, ConsoleExtendedWrapper<T> consoleExtendedWrapper)
+        public InputField(int maxSize, Position screenPosition, ConsoleExtendedWrapper<T,TC> consoleExtendedWrapper)
             : this(maxSize, screenPosition) => _consoleExtendedWrapper = consoleExtendedWrapper;
   
         public void AddChar(char chr) 

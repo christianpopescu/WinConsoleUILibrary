@@ -9,9 +9,10 @@ namespace WinConsoleUILibrary.ConsoleService
     ///  Implements extension of Console class that implements IConsole interface
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ConsoleExtendedWrapper<T>:IConsoleExtensions where T : IConsole
+    /// <typeparam name="TC"></typeparam>
+    public class ConsoleExtendedWrapper<T,TC>:IConsoleExtensions where T : IConsole<TC> where TC : System.Enum
     {
-        private readonly IConsole _console;
+        private IConsole<TC> _console;
 
         private ConsoleExtendedWrapper()
         {}
@@ -20,7 +21,7 @@ namespace WinConsoleUILibrary.ConsoleService
             _console = console;
         }
 
-        public IConsole console
+        public IConsole<TC> console
         {
             get => _console;
         }
