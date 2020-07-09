@@ -11,5 +11,8 @@ namespace WinConsoleUILibrary.ConsoleService
     public interface IConsoleExtensions
     {
         void WriteAt(Position pos, Boolean keepCursorPosition, String toWrite);
+
+        void WriteAt(Position pos, AbstractColor backgroundColor, AbstractColor foregroundColor,
+            Boolean keepCursorPosition, Boolean keepColors, String toWrite);
     }
 }
