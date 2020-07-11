@@ -19,10 +19,17 @@ namespace WinConsoleUILibrary.Controls
         public int CursorPosition {get; set;}
 
         public Position ScreenPosition {get; set;}
+        
+        public AbstractColor ForegroundColor { get; set; }
+
+        public AbstractColor BackgroundColor { get; set; }
 
         private InputField()
         {
             CursorPosition = 0;
+            ForegroundColor = AbstractColor.Blue;
+            BackgroundColor = AbstractColor.Yellow;
+
         }
 
         private InputField(int maxSize) : this() => MaxSize = maxSize;
@@ -52,12 +59,16 @@ namespace WinConsoleUILibrary.Controls
 
         protected void ClearFieldOnScreen()
         {
-            _consoleExtendedWrapper.WriteAt(ScreenPosition, true, new String(' ', MaxSize));
+            _consoleExtendedWrapper.WriteAtWithColors(ScreenPosition, BackgroundColor,
+                ForegroundColor,true, true, new String(' ', MaxSize));
         }
+
         public void Draw()
         {
             ClearFieldOnScreen();
-            _consoleExtendedWrapper.WriteAt(ScreenPosition, true, Value);
+            _consoleExtendedWrapper.WriteAtWithColors(ScreenPosition, BackgroundColor,
+                ForegroundColor, true, true, Value);
+
         }
 
         public void SendKey(ConsoleKeyInfo consoleKeyInfo)

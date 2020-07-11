@@ -12,7 +12,7 @@ namespace WinConsoleUILibrary.ConsoleService
     {
         void WriteAt(Position pos, Boolean keepCursorPosition, String toWrite);
 
-        void WriteAt(Position pos, AbstractColor backgroundColor, AbstractColor foregroundColor,
+        void WriteAtWithColors(Position pos, AbstractColor backgroundColor, AbstractColor foregroundColor,
             Boolean keepCursorPosition, Boolean keepColors, String toWrite);
     }
 }

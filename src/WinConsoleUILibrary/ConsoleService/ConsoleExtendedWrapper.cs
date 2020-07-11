@@ -14,11 +14,14 @@ namespace WinConsoleUILibrary.ConsoleService
     {
         private IConsole<TC> _console;
 
+        private IColorConverter<TC> _colorConverter;
+
         private ConsoleExtendedWrapper()
         {}
-        public ConsoleExtendedWrapper(T console)
+        public ConsoleExtendedWrapper(T console, IColorConverter<TC> colorConverter)
         {
             _console = console;
+            _colorConverter = colorConverter;
         }
 
         public IConsole<TC> console
@@ -27,7 +30,7 @@ namespace WinConsoleUILibrary.ConsoleService
         }
         public void WriteAt(Position pos, bool keepCursorPosition, string toWrite)
         {
-            Position save = new Position(0, 0);
+            Position save = null;
             if (keepCursorPosition)
             {
                 save = new Position(_console.CursorTop, _console.CursorLeft);
@@ -41,22 +44,39 @@ namespace WinConsoleUILibrary.ConsoleService
 
         }
 
-        public void WriteAt(Position pos, AbstractColor backgroundColor, AbstractColor foregroundColor, bool keepCursorPosition,
+        public void WriteAtWithColors(Position pos, AbstractColor backgroundColor, AbstractColor foregroundColor, bool keepCursorPosition,
             bool keepColors, string toWrite)
         {
-            Position save = new Position(0, 0);
-            
+            // Save
+            Position save = null;
             if (keepCursorPosition)
             {
                 save = new Position(_console.CursorTop, _console.CursorLeft);
             }
+
+
+            AbstractColor bckpBackgroundColor = _colorConverter.ToAbstract(_console.BackgroundColor);
+            AbstractColor bckpForegroundColor = _colorConverter.ToAbstract(_console.ForegroundColor);
+
+        // Set
             _console.SetCursorPosition(pos.Raw, pos.Column);
+            _console.BackgroundColor = _colorConverter.FromAbstract(backgroundColor);
+            _console.ForegroundColor = _colorConverter.FromAbstract(foregroundColor);
+            
+            // Do job
             _console.WriteLine(toWrite);
+
+            // Restore if necessary
             if (keepCursorPosition)
             {
                 _console.SetCursorPosition(save.Column, save.Raw);
             }
 
+            if (keepColors)
+            {
+                _console.BackgroundColor = _colorConverter.FromAbstract(bckpBackgroundColor);
+                _console.ForegroundColor = _colorConverter.FromAbstract(bckpForegroundColor);
+            }
         }
     }
 }

@@ -11,7 +11,8 @@ namespace Sandbox
         static void Main(string[] args)
         {
             ConsoleExtendedWrapper<SystemConsoleWrapper, System.ConsoleColor> cew
-                = new ConsoleExtendedWrapper<SystemConsoleWrapper, System.ConsoleColor>(SystemConsoleWrapper.Instance);
+                = new ConsoleExtendedWrapper<SystemConsoleWrapper, System.ConsoleColor>(SystemConsoleWrapper.Instance,
+                    new SystemConsoleColorConverter());
             
             SimpleConsoleApplication sca = new SimpleConsoleApplication();
 
