@@ -44,7 +44,19 @@ namespace WinConsoleUILibrary.ConsoleService
         public void WriteAt(Position pos, AbstractColor backgroundColor, AbstractColor foregroundColor, bool keepCursorPosition,
             bool keepColors, string toWrite)
         {
-            throw new NotImplementedException();
+            Position save = new Position(0, 0);
+            
+            if (keepCursorPosition)
+            {
+                save = new Position(_console.CursorTop, _console.CursorLeft);
+            }
+            _console.SetCursorPosition(pos.Raw, pos.Column);
+            _console.WriteLine(toWrite);
+            if (keepCursorPosition)
+            {
+                _console.SetCursorPosition(save.Column, save.Raw);
+            }
+
         }
     }
 }
